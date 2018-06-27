@@ -1,0 +1,231 @@
+* {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: #333;
+  user-select: none;
+  overflow: hidden;
+}
+html{
+  background-color: #f4f4f4;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  .button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px 15px;
+    max-height: 38px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: darkolivegreen;
+    border: none;
+    transition-duration: 0.2s;
+    border-bottom:6px solid lightgray ;
+    &:hover {
+      background-color: white;
+      color: black;
+      border-bottom:6px solid darkolivegreen ;
+    }
+  }
+}
+.app {
+  display: flex;
+
+  padding: 0 10px 10px;
+  height: 100vh;
+  .week {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    height: 100%;
+    .weekend{
+      background: dimgrey repeating-linear-gradient(45deg, #b7b7b7, #b7b7b7 10px, #7a7a7a 10px, #7a7a7a 20px);
+      flex: 4%;
+      color: white;
+      transition-duration: 0.4s;
+      &:hover{
+        filter: brightness(0.5);
+      }
+      .weekend-name{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: dimgrey;
+        color: white;
+        height: 30px;
+      }
+    }
+    .other-day{
+      box-shadow:  0 0 1em darkolivegreen;
+    }
+    .day {
+      display: flex;
+      flex-direction: column;
+      width: 18%;
+      margin-left: 10px;
+      margin-bottom: 50px;
+
+      &:not(last-child) {
+        margin-right: 10px;
+      }
+      .day {
+        &-name{
+          display: flex;
+          background-color:darkolivegreen;
+          color: white;
+          justify-content: center;
+          align-items: center;
+          min-height: 30px;
+          div{
+            flex-grow: 2;
+            text-align: center;
+            color: white;
+          }
+          .string-day{
+             max-width: 33%;
+          }
+          .number-day{
+            max-width: 33%;
+            font-size: xx-large;
+            justify-content: center;
+          }
+          .month-day{
+            max-width: 33%;
+          }
+        }
+        &-time {
+
+          max-height: 2.4rem;
+          min-height: 2.4rem;
+
+          .nameHour{
+            display: flex;
+            justify-content: flex-end;
+            align-items: start;
+            opacity: 0.3;
+            flex: 15%;
+            min-width: 15%;
+          }
+          &:hover {
+            background-color: rgba(132, 155, 49, 0.21);
+            .nameHour{
+              opacity: 1;
+            }
+            .taskIn{
+              //filter: brightness(0.8);
+
+            }
+          }
+
+          .taskIn{
+            z-index: 1000;
+            position:fixed;
+            align-items: center;
+            justify-content: center;
+            font-size: 10pt;
+            font-weight:bold;
+            max-width: 85%;
+            flex: 85%;
+            .data-taskIn{
+              width: 100%;
+              //height: 25px;
+              flex: 1 85%;
+              margin: 0;
+              .name-taskIn{
+                flex:1 100%;
+                text-align: center;
+              }
+              .range-taskIn{
+                flex:1 60%;
+              }
+            }
+            .resizer{
+
+              position: absolute;
+              bottom: 0;
+
+              margin-bottom: 1px;
+              display: flex;
+              height:0.7rem;
+              //flex: 1 15%;
+              background-color: blue;
+
+
+              width: 100%;
+              color: black;
+              cursor: row-resize;
+              align-content: flex-start;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  .tasks-list {
+    //flex: none;
+    min-width: 150px;
+    .tasks-list-year{
+      height: 30px;
+      text-align: center;
+      font-size: x-large;
+      align-items: center;
+      color: darkolivegreen;
+      border-top: 1px solid darkolivegreen;
+      border-left: 1px solid darkolivegreen;
+      border-right: 1px solid darkolivegreen;
+    }
+    .tasks-list-title{
+      display:flex;
+      align-items: center;
+      height: 30px;
+      background-color: darkolivegreen;
+      margin-bottom: 10px ;
+      justify-content: center;
+      color:white;
+    }
+    .task{
+      text-align: center;
+      background-color: lightgray;
+      border-left:6px solid darkolivegreen ;
+      padding: 5px;
+      &:hover{
+        filter: brightness(0.8);
+      }
+    }
+  }
+  #today{
+    .day-name{
+      background-color: white;
+      border: 1px solid darkolivegreen;
+      div{
+        color: darkolivegreen;
+      }
+
+    }
+  }
+  .redDelay{
+    background-color: rgba(255, 5, 0, 0.92);
+    color: black;
+  }
+  .orangeDelay{
+    background-color: #ff8018;
+    color: black;
+  }
+  .greenDelay{
+    background-color: rgb(162, 185, 50);;
+    color: black;
+  }
+}
+
+
+
+
