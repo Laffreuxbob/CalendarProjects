@@ -16,13 +16,6 @@
              :key="h.date.format('HH:mm')"
              @dragover="(e)=>{e.preventDefault()}"
              @drop="handleDrop(h.date, $event)">
-             <!--style="z-index: 0"-->
-
-            <!--taskIn en absolute (attention aux width)
-            day time sans flex
-            text align droite hour
-            z-index-->
-            <!--{{index}}-->
 
             <div class="taskIn"
                  :class="getDelai(t.dueDate, t.startDate.locale('fr').format('YYYY-MM-DD'))"
@@ -33,7 +26,6 @@
                  v-for="t in dayTasks"
                  :key="t.id"
                  v-if=" h.date.format('HH:mm') === t.startDate.format('HH:mm')">
-                 <!--onmouseover="console.log('test')"-->
 
                 <div class="data-taskIn">
                     <div class="name-taskIn">{{t.label}} -{{getSlotTime(t,"end")}}</div>
