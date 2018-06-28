@@ -202,7 +202,6 @@
                         return task.startDate.format('HH:mm') + "--" + task.startDate.clone().add(task.duration, 'hours').format('HH:mm');
                 }
             },
-
             // On recupere le delai en jour pour la class : couleur en fonction du delai
             getDelai(date1, date2) {
                 let delai = moment(date1).diff(moment(date2));
@@ -239,7 +238,6 @@
                 /*if (a > x) {
                     return true
                 } else return !!(a = x && b > y);*/
-
 
                 /*return (a > x || (a = x && b > y))*/
             },
