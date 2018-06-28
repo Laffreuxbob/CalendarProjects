@@ -1,4 +1,4 @@
-# vuefonctionnelle
+# Vue Calendar + Projects
 
 > A Vue.js project
 
