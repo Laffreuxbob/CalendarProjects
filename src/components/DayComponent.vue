@@ -117,9 +117,7 @@
             },
 
             initResize(task, event) {
-                console.log("-----------------------");
                 console.log("Start resize");
-                console.log("-----------------------");
 
                 this.actualDiv = event.path[1]; // On recupere le projet "graphique"
                 this.actualDiv.draggable = false; // Il est resizable et plus draggable
@@ -130,7 +128,7 @@
                 window.addEventListener('mouseup', this.stopResize, false);
 
                 // Init des data
-                this.trancheHoraireResize = [task.startDate.format('HH:mm')];
+                this.trancheHoraireResize = [task.startDate.format('HH:mm'), task.startDate.clone().add(task.duration, "hours").format('HH:mm')];
                 this.actualTask = task;
                 this.durationInit = this.actualTask.duration;
             },
@@ -144,15 +142,12 @@
                     let texte = divH.innerText; // On recupere l'heure en str
                     // On passe nos str en moment()
                     let currentSlot = (moment(texte)._i);
-                    console.log("-----------------------");
-                    console.log("startSlot", startSlot);
-                    console.log("currentSlot", currentSlot);
-                    console.log("-----------------------");
 
                     let currentHour = parseInt(currentSlot.substring(0, 2));
                     let startHour = parseInt(startSlot.substring(0, 2));
                     let currentMin = parseInt(currentSlot.substring(3, 5));
                     let startMin = parseInt(startSlot.substring(3, 5));
+
 
                     // On teste le resize vers le haut
                     let negativ = this.negativResize(currentHour, currentMin, startHour, startMin);
@@ -165,10 +160,14 @@
                         if (texte !== this.trancheHoraireResize[i - 1]
                             && texte !== this.trancheHoraireResize[i - 2]) {
                             this.trancheHoraireResize.push(texte);
+                            console.log(this.trancheHoraireResize);
+                            console.log(texte);
                             this.actualTask.duration = this.durationInit + (this.trancheHoraireResize.length - 1) * unitTime;
                             // Sinon si tranche precedemment rencontree on la retire
                         } else if (texte === this.trancheHoraireResize[i - 2]) {
                             this.trancheHoraireResize.pop();
+                            console.log(this.trancheHoraireResize);
+                            console.log(texte);
                             this.actualTask.duration = this.durationInit + (this.trancheHoraireResize.length - 1) * unitTime;
                         }
                     }
@@ -176,14 +175,12 @@
             },
 
             stopResize() {
-                console.log("-----------------------");
                 console.log("End resize");
-                console.log("-----------------------");
-
                 // On retire nos evenements de resizer
                 window.removeEventListener('mousemove', this.resize, false);
                 window.removeEventListener('mouseup', this.stopResize, false);
 
+                this.actualTask.range = this.trancheHoraireResize;
                 // On reinitialise nos data
                 this.actualDiv.draggable = true;
                 this.actualDiv = null;

@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-let ids = 0
+let ids = 0;
 
 const taskGen = () => ({
   id: ids++,
@@ -9,7 +9,8 @@ const taskGen = () => ({
   dueDate: moment().endOf('week'),
   startDate: null,
   project_id: Math.round(Math.random()) + 1,
-})
+  range: [],
+});
 
 export default {
   projects: [
